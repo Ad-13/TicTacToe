@@ -1,7 +1,9 @@
-export type Player = "X" | "O" | null;
+export type TPlayer = 'X' | 'O' | null;
+export type TWinner = TPlayer | 'draw';
 
 export interface GameState {
-  board: Player[];
-  currentPlayer: Player;
-  winner: Player | "draw" | null;
+  board: TPlayer[];
+  currentPlayer: TPlayer;
+  winner: TPlayer | 'draw' | null;
+  winningCombo: number[] | null;
 }

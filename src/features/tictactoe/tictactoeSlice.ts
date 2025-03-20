@@ -5,6 +5,7 @@ const initialState: GameState = {
   board: Array(9).fill(null),
   currentPlayer: 'X',
   winner: null,
+  winningCombo: null,
 };
 
 const tictactoeSlice = createSlice({
@@ -31,18 +32,21 @@ const tictactoeSlice = createSlice({
           state.board[a] === state.board[c]
         ) {
           state.winner = state.board[a];
+          state.winningCombo = [a, b, c];
           return;
         }
       }
 
       if (!state.board.includes(null)) {
         state.winner = 'draw';
+        state.winningCombo = null;
       }
     },
     resetGame: state => {
       state.board = Array(9).fill(null);
       state.currentPlayer = 'X';
       state.winner = null;
+      state.winningCombo = null;
     },
   },
 });

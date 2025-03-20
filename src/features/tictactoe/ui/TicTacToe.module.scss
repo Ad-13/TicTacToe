@@ -17,28 +17,10 @@
   cursor: pointer;
 
   &:hover {
-    background: #f0f0f0;
+    background: rgb(240, 240, 240);
   }
 
   &.disabled {
     cursor: not-allowed;
-  }
-}
-
-button {
-  padding: 10px 15px;
-  margin-top: 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-
-  &.restart {
-    background: $primary-color;
-    color: white;
-    border-radius: 5px;
-
-    &:hover {
-      background: color.adjust($primary-color, $lightness: -10%);
-    }
   }
 }

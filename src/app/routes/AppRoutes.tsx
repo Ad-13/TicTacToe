@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
-import TicTacToe from '@features/tictactoe/ui/TicTacToe';
+import TicTacToePage from '@pages/TicTacToePage';
 
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<TicTacToe />} />
+      <Route path="/" element={<TicTacToePage />} />
     </Routes>
   );
 };
