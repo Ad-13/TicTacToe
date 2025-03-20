@@ -1,0 +1,31 @@
+.txt {
+  margin-left: 10px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.link {
+  align-items: center;
+  display: flex;
+  color: #000;
+  font-size: 1.2rem;
+  padding: 15px 0;
+  margin-bottom: 10px;
+  text-decoration: none;
+  transition: all .2s ease-in-out;;
+
+  &:hover {
+    background: #eee;
+    color: #00a046;
+  }
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    width: 30px;
+  }
+}

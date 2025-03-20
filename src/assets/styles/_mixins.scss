@@ -1,0 +1,33 @@
+@mixin styleFotText($color, $fontSize, $fontFamily: Roboto) {
+  color: $color;
+  font-size: $fontSize;
+  font-family: $fontFamily;
+}
+
+@mixin breakpoint($point) {
+  @if $point == xl {
+    @media (min-width: $xlWidth) {
+      @content;
+    }
+  } @else if $point == lg {
+    @media (max-width: $lgWidth) {
+      @content;
+    }
+  } @else if $point == md {
+    @media (max-width: $mdWidth) {
+      @content;
+    }
+  } @else if $point == mdmin {
+    @media (min-width: $mdWidth) {
+      @content;
+    }
+  } @else if $point == sm {
+    @media (max-width: $smWidth) {
+      @content;
+    }
+  } @else if $point == xs {
+    @media (max-width: $xsWidth) {
+      @content;
+    }
+  }
+}

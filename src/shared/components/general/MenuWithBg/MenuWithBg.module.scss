@@ -1,0 +1,20 @@
+.menuWrapper {
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  padding-top: 70px;
+  width: 100%;
+  height: 100%;
+}
+
+.menu {
+  background: #fff;
+  overflow-x: hidden;
+  padding: 20px;
+  min-height: 200px;
+  width: calc(100% - 30px);
+  word-wrap: break-word;
+  // position: absolute;
+  // top: 50px;
+  // left: 15px;
+}

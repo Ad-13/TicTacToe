@@ -1,0 +1,65 @@
+.productCard {
+  display: flex;
+  position: relative;
+}
+
+.spinnerWrapper {
+  align-items: center;
+  background: rgba(255,255,255,0.5);
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.productImage {
+  max-height: 200px;
+  max-width: 200px;
+  text-align: center;
+  padding: 10px;
+}
+
+.img {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.productDetails {
+  flex: 1;
+  padding: 10px;
+}
+
+.productActions {
+  padding: 10px;
+}
+
+.productDetailsTop {
+  margin-bottom: 20px;
+}
+
+.productPrice {
+  font-size: 1.5rem;
+}
+
+.input {
+  margin-bottom: 0;
+  input {
+    width: 65px;
+  }
+}
+
+.label {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.btnWrapper {
+  align-items: flex-start;
+  display: flex;
+  font-size: 1.1rem;
+  gap: 10px;
+}

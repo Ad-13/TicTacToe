@@ -1,0 +1,40 @@
+.inputGroup {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.select {
+  width: 100%;
+}
+
+.dropdownIcon {
+  color: #495057;
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.invalid .react-select__control {
+  border-color: #dc3545 !important;
+}
+
+.invalid .react-select__indicator {
+  color: #dc3545 !important;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #495057;
+}
+
+.error {
+  font-size: 0.9rem;
+  color: #dc3545;
+}

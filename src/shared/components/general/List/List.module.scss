@@ -1,0 +1,25 @@
+.container {
+}
+
+.item {
+}
+
+.list {
+  .item {
+    border-bottom: 1px solid #bbb;
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+.grid {
+  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  li {
+    display: grid;
+  }
+}
