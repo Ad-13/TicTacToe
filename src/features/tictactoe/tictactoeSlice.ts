@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { GameState } from './types';
+import { calculateWinner } from './utils';
 
 const initialState: GameState = {
   board: Array(9).fill(null),
@@ -18,23 +19,13 @@ const tictactoeSlice = createSlice({
 
       state.board[index] = state.currentPlayer;
       state.currentPlayer = state.currentPlayer === 'X' ? 'O' : 'X';
-      
-      const winningCombinations = [
-        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontals
-        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Verticals
-        [0, 4, 8], [2, 4, 6]             // Diagonals
-      ];
 
-      for (const [a, b, c] of winningCombinations) {
-        if (
-          state.board[a] &&
-          state.board[a] === state.board[b] &&
-          state.board[a] === state.board[c]
-        ) {
-          state.winner = state.board[a];
-          state.winningCombo = [a, b, c];
-          return;
-        }
+      const winningCombo = calculateWinner(state.board);
+
+      if (winningCombo) {
+        state.winner = state.board[winningCombo[0]];
+        state.winningCombo = winningCombo;
+        return;
       }
 
       if (!state.board.includes(null)) {

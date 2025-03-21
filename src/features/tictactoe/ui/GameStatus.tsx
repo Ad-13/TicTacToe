@@ -1,9 +1,11 @@
 import { FC } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAppSelector } from '@src/app/store/hooks';
+import { getGameStatus } from '../utils';
 
 const GameStatus: FC = () => {
   const { currentPlayer, winner } = useAppSelector(state => state.tictactoe);
+  const gameStatus = getGameStatus(winner, currentPlayer);
 
   return (
     <AnimatePresence mode="wait">
@@ -14,7 +16,7 @@ const GameStatus: FC = () => {
         exit={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.1 }}
       >
-        {winner ? (winner === 'draw' ? 'Draw' : `Winner: ${winner}`) : `Turn: ${currentPlayer}`}
+        {gameStatus}
       </motion.h2>
     </AnimatePresence>
   );
