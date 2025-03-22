@@ -1,6 +1,6 @@
-import { TPlayer, TWinner } from './types';
+import { TWinner, TCellValue, TBoard } from './types';
 
-export const calculateWinner = (board: TPlayer[]): number[] | null => {
+export const calculateWinningCombination = (board: TBoard): number[] | null => {
   const winningCombinations = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontals
     [0, 3, 6], [1, 4, 7], [2, 5, 8], // Verticals
@@ -18,9 +18,20 @@ export const calculateWinner = (board: TPlayer[]): number[] | null => {
 
 export const getGameStatus = (
   winner: TWinner,
-  currentPlayer: TPlayer,
+  currentPlayer: TCellValue,
 ): string => {
   if (winner === 'draw') return "Game Draw!";
   if (winner) return `Winner: ${winner}`;
   return `Current Player: ${currentPlayer}`;
+};
+
+export const isBoardFull = (board: TBoard): boolean => {
+  return board.every(cell => cell !== null);
+};
+
+export const getEmptyCells = (board: TBoard): number[] => {
+  return board.reduce((acc: number[], cell, index) => {
+    if (cell === null) acc.push(index);
+    return acc;
+  }, []);
 };

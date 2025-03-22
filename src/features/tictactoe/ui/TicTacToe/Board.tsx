@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import { useActions, useAppSelector } from '@src/app/store/hooks';
-import { makeMove } from '../tictactoeSlice';
+import { makeMove } from '../../tictactoeSlice';
 
 import Cell from './Cell';
 
@@ -14,7 +14,7 @@ const Board: FC = () => {
   return (
     <div className={styles.board}>
       {board.map((cell, index) => (
-        <Cell key={index} index={index} value={cell} onClick={() => dispatchMakeMove(index)} />
+        <Cell key={index} index={index} value={cell} onClick={dispatchMakeMove} />
       ))}
     </div>
   );

@@ -24,3 +24,9 @@
     cursor: not-allowed;
   }
 }
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

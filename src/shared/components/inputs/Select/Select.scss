@@ -1,0 +1,36 @@
+.invalid .react-select__control {
+  border-color: #dc3545;
+}
+
+.invalid .react-select__indicator {
+  color: #dc3545;
+}
+
+[class*="select"] {
+  .react-select__control {
+    border-color: #ced4da;
+    transition: border-color 0.15s ease-in-out;
+  
+    &:hover {
+      border-color: #007bff;
+    }
+  }
+  
+  .react-select__control--is-focused {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .react-select__control {
+    min-height: 37px;
+  }
+
+  .react-select__value-container {
+    padding: 0.375rem 0.75rem;
+  }
+  
+  .react-select__input-container {
+    margin: 0;
+  }
+}

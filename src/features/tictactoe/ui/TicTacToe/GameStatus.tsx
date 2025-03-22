@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAppSelector } from '@src/app/store/hooks';
-import { getGameStatus } from '../utils';
+import { getGameStatus } from '../../helpers/utils';
 
 const GameStatus: FC = () => {
   const { currentPlayer, winner } = useAppSelector(state => state.tictactoe);

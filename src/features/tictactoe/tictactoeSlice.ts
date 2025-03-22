@@ -1,26 +1,38 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GameState } from './types';
-import { calculateWinner } from './utils';
+import { EGameMode, IGameState } from './helpers/types';
+import { calculateWinningCombination } from './helpers/utils';
+import { findBestMove } from './helpers/ai';
 
-const initialState: GameState = {
+const initialState: IGameState = {
   board: Array(9).fill(null),
   currentPlayer: 'X',
   winner: null,
   winningCombo: null,
+  gameMode: EGameMode.VS_HUMAN,
+  players: { X: 'Player 1', O: 'Player 2' },
+  isAiThinking: false,
 };
 
 const tictactoeSlice = createSlice({
   name: 'tictactoe',
   initialState,
   reducers: {
+    setIsAiThinking: (state, action: PayloadAction<boolean>) => {
+      state.isAiThinking = action.payload;
+    },
+    setGameMode: (state, action: PayloadAction<EGameMode>) => {
+      state.gameMode = action.payload;
+      if (action.payload === EGameMode.VS_COMPUTER) {
+        state.players.O = 'Computer';
+      }
+    },
     makeMove: (state, action: PayloadAction<number>) => {
       const index = action.payload;
-      if (state.board[index] || state.winner) return;
+      if (state.isAiThinking || state.board[index] || state.winner) return;
 
       state.board[index] = state.currentPlayer;
-      state.currentPlayer = state.currentPlayer === 'X' ? 'O' : 'X';
 
-      const winningCombo = calculateWinner(state.board);
+      const winningCombo = calculateWinningCombination(state.board);
 
       if (winningCombo) {
         state.winner = state.board[winningCombo[0]];
@@ -30,17 +42,34 @@ const tictactoeSlice = createSlice({
 
       if (!state.board.includes(null)) {
         state.winner = 'draw';
-        state.winningCombo = null;
+        return;
       }
+
+      state.currentPlayer = state.currentPlayer === 'X' ? 'O' : 'X';
     },
-    resetGame: state => {
-      state.board = Array(9).fill(null);
+    makeAiMove: (state) => {
+      const bestMove = findBestMove(state.board);
+      state.board[bestMove] = 'O';
+
+      const winningCombo = calculateWinningCombination(state.board);
+      state.isAiThinking = false;
+
+      if (winningCombo) {
+        state.winner = state.board[winningCombo[0]];
+        state.winningCombo = winningCombo;
+        return;
+      }
+
+      if (!state.board.includes(null)) {
+        state.winner = 'draw';
+        return;
+      }
+
       state.currentPlayer = 'X';
-      state.winner = null;
-      state.winningCombo = null;
     },
+    resetGame: state => ({ ...initialState, gameMode: state.gameMode, players: state.players }),
   },
 });
 
-export const { makeMove, resetGame } = tictactoeSlice.actions;
+export const { makeMove, resetGame, setGameMode, makeAiMove, setIsAiThinking } = tictactoeSlice.actions;
 export default tictactoeSlice.reducer;
