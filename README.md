@@ -50,6 +50,7 @@ npm run format
 - Animated UI with Framer Motion.
 - Error handling with an Error Boundary.
 - Modular and scalable project structure.
+- AI opponent possibility 
 
 ## Technologies Used
 
