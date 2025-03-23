@@ -50,7 +50,8 @@ npm run format
 - Animated UI with Framer Motion.
 - Error handling with an Error Boundary.
 - Modular and scalable project structure.
-- AI opponent possibility 
+- AI opponent possibility
+- Continuous Deployment with Vercel for automatic updates on every push to `main`.
 
 ## Technologies Used
 
